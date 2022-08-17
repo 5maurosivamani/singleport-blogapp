@@ -29,7 +29,7 @@ app.use(
 
 app.use(
   session({
-    key: "catche007",
+    key: "cookie__catch__80FF80",
     secret: "secret",
     resave: false,
     saveUninitialized: true,
