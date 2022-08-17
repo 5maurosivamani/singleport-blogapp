@@ -12,7 +12,7 @@ router.post("/new", (req, res) => {
 
   User.findOne({ lowerCaseUsername: _.toLower(username) }, (err, doc) => {
     if (doc) {
-      console.log(doc);
+      // console.log(doc);
       res.send("exist");
     } else {
       bcrypt.hash(myPlaintextPassword, saltRounds, function (err, hash) {

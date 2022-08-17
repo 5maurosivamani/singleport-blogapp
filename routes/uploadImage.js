@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
   const newPathArray = pathArray.splice(0, pathArray.length - 2);
   const newPath = newPathArray.join("\\");
 
-  console.log(blogImage);
+  // console.log(blogImage);
 
   var uploadPath =
     newPath + "/client/fitness_app/public/images/" + blogImageName;
