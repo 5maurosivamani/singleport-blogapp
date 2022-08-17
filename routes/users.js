@@ -36,7 +36,7 @@ router.post("/new", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/login", (req, res) => {
   const userName = req.body.username;
   const myPlaintextPassword = req.body.password;
   const filterUser = {
