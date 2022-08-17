@@ -29,7 +29,7 @@ app.use(
 
 app.use(
   session({
-    key: "userId",
+    key: "catche007",
     secret: "secret",
     resave: false,
     saveUninitialized: true,
