@@ -27,12 +27,14 @@ app.use(
   })
 );
 
+app.enable("trust proxy", true);
+
 app.use(
   session({
     key: "cookie__catch__80FF80",
     secret: "secret",
     saveUninitialized: true,
-    cookie: { maxAge: twoDay, secure: false },
+    cookie: { maxAge: 1000 * 60 * 60 * 24, secure: false },
     resave: false,
   })
 );
