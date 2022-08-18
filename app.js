@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: ["https://fitness-blog-app-client.herokuapp.com/"],
+    origin: ["https://fitness-blog-app-client.herokuapp.com"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
