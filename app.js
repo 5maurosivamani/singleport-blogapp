@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: [process.env.CLINT_URL || "http://localhost:3000"],
+    origin: [process.env.CLINT_URL],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
@@ -31,11 +31,9 @@ app.use(
   session({
     key: "cookie__catch__80FF80",
     secret: "secret",
-    resave: false,
     saveUninitialized: true,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24,
-    },
+    cookie: { maxAge: twoDay, secure: false },
+    resave: false,
   })
 );
 
