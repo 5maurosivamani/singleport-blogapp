@@ -27,7 +27,7 @@ app.use(
   })
 );
 
-app.enable("trust proxy", true);
+app.enable("trust proxy");
 
 app.use(
   session({
