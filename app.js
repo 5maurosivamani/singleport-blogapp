@@ -34,7 +34,7 @@ app.use(
     key: "cookie__catch__80FF80",
     secret: "secret",
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, secure: false },
+    cookie: { maxAge: 1000 * 60 * 60 * 24, secure: false, httpOnly: true },
     resave: false,
   })
 );
