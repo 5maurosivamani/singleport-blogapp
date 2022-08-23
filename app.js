@@ -27,13 +27,28 @@ app.use(
   })
 );
 
+app.enable("trust proxy");
+
+app.use(
+  session({
+    key: "cookie__catch__80FF80",
+    secret: "secret",
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+      secure: false,
+    },
+    resave: false,
+  })
+);
+
 app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true, maxAge: 1000 * 60 * 60 * 24 },
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 },
   })
 );
 
