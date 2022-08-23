@@ -45,6 +45,7 @@ app.use(
 app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
+    key: "fitness_server_cookies",
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
