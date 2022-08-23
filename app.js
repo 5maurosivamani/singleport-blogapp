@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 
 require("dotenv").config();
@@ -26,6 +27,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(cookieParser());
 
 app.set("trust proxy", 1); // trust first proxy
 
