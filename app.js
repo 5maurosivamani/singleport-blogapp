@@ -30,7 +30,7 @@ app.use(
 
 app.use(cookieParser());
 
-app.set("trust proxy", 1); // trust first proxy
+app.set("trust proxy", true); // trust first proxy
 
 app.use(
   session({
@@ -40,7 +40,7 @@ app.use(
     saveUninitialized: true,
     cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 },
     secure: true,
-    proxy: true
+    proxy: true,
   })
 );
 
