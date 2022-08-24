@@ -41,7 +41,7 @@ app.use(
       checkPeriod: 86400000, // prune expired entries every 24h
     }),
     saveUninitialized: true,
-    resave: true,
+    resave: false,
     secret: "keyboard cat",
   })
 );
