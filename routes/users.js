@@ -74,10 +74,6 @@ router.get("/login", (req, res) => {
   if (req.session.userInfo) {
     res.send({ loggedIn: true, user: req.session.userInfo });
   } else {
-    req.session.userInfo = {
-      username: "sivamani",
-      userid: "dfdfdfdfdkj4454dfd",
-    };
     res.send({ loggedIn: false });
   }
 });
