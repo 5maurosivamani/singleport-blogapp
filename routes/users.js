@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
           userid: user._id,
         };
 
-        console.log(req.session.user);
+        console.log("session details=" + req.session.user);
 
         res.send({
           status: "valid",
