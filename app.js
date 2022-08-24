@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 
@@ -41,6 +42,9 @@ app.use(
     cookie: {
       secure: true,
     },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
   })
 );
 
