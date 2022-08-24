@@ -53,7 +53,7 @@ router.post("/login", (req, res) => {
     } else {
       const cmp = await bcrypt.compare(myPlaintextPassword, user.password);
       if (cmp) {
-        req.session.user = {
+        req.session.userInfo = {
           username: user.username,
           userid: user._id,
         };
@@ -72,16 +72,16 @@ router.post("/login", (req, res) => {
 
 router.get("/login", (req, res) => {
   console.log("Session Details:");
-  console.log(req.session.user);
-  if (req.session.user) {
-    res.send({ loggedIn: true, user: req.session.user });
+  console.log(req.session.userInfo);
+  if (req.session.userInfo) {
+    res.send({ loggedIn: true, user: req.session.userInfo });
   } else {
     res.send({ loggedIn: false });
   }
 });
 
 router.delete("/logout", (req, res) => {
-  if (req.session.user) {
+  if (req.session.userInfo) {
     req.session.destroy((err) => {
       if (!err) {
         res.send({ loggedIn: false });

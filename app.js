@@ -31,18 +31,15 @@ app.use(
 
 app.use(cookieParser());
 
-app.set("trust proxy", 1);
-
 app.use(
   session({
-    key: "cookie.connection.id",
-    cookie: { maxAge: 86400000 },
+    secret: "keyboard cat",
     store: new MemoryStore({
       checkPeriod: 86400000, // prune expired entries every 24h
     }),
-    saveUninitialized: true,
     resave: false,
-    secret: "keyboard cat",
+    saveUninitialized: true,
+    cookie: { secure: false },
   })
 );
 
