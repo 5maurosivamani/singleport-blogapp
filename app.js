@@ -30,15 +30,17 @@ app.use(
 
 app.use(cookieParser());
 
-app.set("trust proxy", true); // trust first proxy
+app.set("trust proxy", 1);
 
 app.use(
   session({
-    key: "fitness_server_cookies",
-    secret: "keyboard cat",
-    resave: false,
+    secret: "secret",
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24, sameSite: "none" },
+    resave: false,
+    maxAge: 1000 * 60 * 15,
+    cookie: {
+      secure: true,
+    },
   })
 );
 
