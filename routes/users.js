@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+var _ = require("lodash");
 
 const User = require("../model/user");
-var _ = require("lodash");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+
+const jwtKey = "Konjam_Ulari_Kottava";
 
 router.post("/new", (req, res) => {
   const username = req.body.username;
@@ -53,29 +56,47 @@ router.post("/login", (req, res) => {
     } else {
       const cmp = await bcrypt.compare(myPlaintextPassword, user.password);
       if (cmp) {
+        const id = user._id;
+        const token = jwt.sign({ id }, jwtKey, {
+          expiresIn: 300,
+        });
+
         req.session.userInfo = {
           username: user.username,
           userid: user._id,
         };
 
-        res.send({
+        res.json({
           status: "valid",
           username: user.username,
           userid: user._id,
+          token: token,
         });
       } else {
-        res.send({ status: "invalid-password" });
+        res.json({ status: "invalid-password" });
       }
     }
   });
 });
 
-router.get("/login", (req, res) => {
-  if (req.session.userInfo) {
-    res.send({ loggedIn: true, user: req.session.userInfo });
+const verifyJwt = (req, res, next) => {
+  const token = req.headers["x-access-token"];
+  if (!token) {
+    res.send("Yo, we need a token. Please give it to us next time.");
   } else {
-    res.send({ loggedIn: false });
+    jwt.verify(token, jwtKey, (err, decoded) => {
+      if (err) {
+        res.json({ auth: false, message: "You failed to authenticate." });
+      } else {
+        req.userId = decoded.id;
+        next();
+      }
+    });
   }
+};
+
+router.get("/auth", verifyJwt, (req, res) => {
+  res.json({ auth: true, message: "Yo, you are authenticated. Congrats!" });
 });
 
 router.delete("/logout", (req, res) => {
