@@ -13,14 +13,13 @@ router.post("/", async (req, res) => {
   const extention = path.extname(blogImage.name);
   const imgList = [".png", ".jpg", ".jpeg", ".gif"];
   const blogImageName = req.body.imageName;
-  const pathArray = __dirname.split("\\");
-  const newPathArray = pathArray.splice(0, pathArray.length - 2);
-  const newPath = newPathArray.join("\\");
+  // const pathArray = __dirname.split("\\");
+  // const newPathArray = pathArray.splice(0, pathArray.length - 2);
+  // const newPath = newPathArray.join("\\");
 
   // console.log(blogImage);
 
-  var uploadPath =
-    newPath + "/client/fitness_app/public/images/" + blogImageName;
+  var uploadPath = process.env.CLINT_URL + "/images/" + blogImageName;
 
   if (!imgList.includes(extention)) {
     res.status(500).send("Invalid file!");
