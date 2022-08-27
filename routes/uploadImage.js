@@ -1,6 +1,7 @@
+const { log } = require("console");
 const express = require("express");
 const router = express.Router();
-const fileUpload = require("express-fileupload");
+// const fileUpload = require("express-fileupload");
 const path = require("path");
 
 router.post("/", async (req, res) => {
@@ -18,6 +19,9 @@ router.post("/", async (req, res) => {
   const newPath = newPathArray.join("\\");
 
   var uploadPath = newPath + "\\/public/images/" + blogImageName;
+  console.log(uploadPath);
+
+  return;
 
   if (!imgList.includes(extention)) {
     res.status(500).send("Invalid file!");
