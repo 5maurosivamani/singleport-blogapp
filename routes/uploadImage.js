@@ -20,6 +20,7 @@ router.post("/", async (req, res) => {
 
   var uploadPath = newPath + "\\/public/images/" + blogImageName;
   console.log(uploadPath);
+  res.send("test");
 
   return;
 
