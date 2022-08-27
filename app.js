@@ -62,11 +62,13 @@ const indexRoute = require("./routes/index");
 const postsRoute = require("./routes/posts");
 const usersRoute = require("./routes/users");
 const uploadRoute = require("./routes/uploadImage");
+const fetchImage = require("./routes/fetchImage");
 
 app.use("/", indexRoute);
 app.use("/posts", postsRoute);
 app.use("/users", usersRoute);
 app.use("/upload", uploadRoute);
+app.use("/images", fetchImage);
 
 // Listen Port
 app.listen(port, (err) => {
