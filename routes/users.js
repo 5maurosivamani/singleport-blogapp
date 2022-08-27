@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
       if (cmp) {
         const id = user._id;
         const token = jwt.sign({ id }, jwtKey, {
-          expiresIn: 300,
+          expiresIn: 300 * 12,
         });
 
         req.session.userInfo = {
