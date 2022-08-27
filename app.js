@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: [process.env.CLINT_URL],
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
 );
