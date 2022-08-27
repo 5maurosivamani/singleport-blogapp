@@ -29,8 +29,8 @@ router.get("/:id", (req, res) => {
 router.post("/new", (req, res) => {
   const postData = {
     ...req.body,
-    userId: req.session.user.userid,
-    userName: req.session.user.username,
+    userId: req.body.userid,
+    userName: req.body.username,
   };
   const newPost = new WorkoutPost(postData);
   newPost.save((err) => {
