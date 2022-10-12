@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: [process.env.CLINT_URL],
+    origin: [process.env.CLINT_URL || "http://localhost:3000"],
     methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
