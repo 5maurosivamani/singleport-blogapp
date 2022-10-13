@@ -21,7 +21,11 @@ app.use(bodyParser.json());
 
 // app.use(forms.array());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(cookieParser());
 
