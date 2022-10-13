@@ -21,7 +21,13 @@ app.use(bodyParser.json());
 
 // app.use(forms.array());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.CLINT_URL],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 
