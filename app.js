@@ -21,13 +21,39 @@ app.use(bodyParser.json());
 
 // app.use(forms.array());
 
-app.use(
-  cors({
-    origin: `${process.env.CLINT_URL}`,
-    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: `${process.env.CLINT_URL}`,
+//     methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+//     credentials: true,
+//   })
+// );
+
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", `${process.env.CLINT_URL}`);
+
+  // Request methods you wish to allow
+  res.setHeader("Access-Control-Allow-Methods", [
+    "GET",
+    "POST",
+    "DELETE",
+    "PUT",
+    "OPTIONS",
+  ]);
+
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  // Pass to next layer of middleware
+  next();
+});
 
 app.use(cookieParser());
 
