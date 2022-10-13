@@ -21,13 +21,7 @@ app.use(bodyParser.json());
 
 // app.use(forms.array());
 
-app.use(
-  cors({
-    origin: ["http://fitness-blog-app-client.herokuapp.com/"],
-    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(cookieParser());
 
