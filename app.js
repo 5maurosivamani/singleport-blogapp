@@ -57,21 +57,21 @@ mongoose.connection.on("error", () => {
   console.log("Database Connection Failed!");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "build", "index.html"));
-});
-
 const indexRoute = require("./routes/index");
 const postsRoute = require("./routes/posts");
 const usersRoute = require("./routes/users");
 const uploadRoute = require("./routes/uploadImage");
 const fetchImage = require("./routes/fetchImage");
 
-app.use("/", indexRoute);
+// app.use("/", indexRoute);
 app.use("/posts", postsRoute);
 app.use("/users", usersRoute);
 app.use("/upload", uploadRoute);
 app.use("/images", fetchImage);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "build", "index.html"));
+});
 
 // Listen Port
 app.listen(port, (err) => {
