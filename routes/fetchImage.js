@@ -1,14 +1,15 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 
 const router = express.Router();
 
 router.get("/:img_name", (req, res) => {
-  // const pathArray = __dirname.split("/");
-  // const newPathArray = pathArray.splice(0, pathArray.length - 1);
-  // const newPath = newPathArray.join("/");
-  var imageName = req.params.img_name;
-  var imagePath = path.join(__dirname, "public", "images", imageName);
+  const pathArray = __dirname.split("/");
+  const newPathArray = pathArray.splice(0, pathArray.length - 1);
+  const newPath = newPathArray.join("/");
+
+  var imagePath = path.join(newPath, "public", "images", req.params.img_name);
 
   if (fs.existsSync(imagePath)) {
     res.send(imagePath);
