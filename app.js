@@ -22,11 +22,12 @@ app.use(bodyParser.json());
 
 // app.use(forms.array());
 
-// app.use(
-//   cors({
-//     origin: [process.env.CLINT_URL],
-//   })
-// );
+app.use(
+  cors({
+    origin: process.env.CLINT_URL,
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 
@@ -69,7 +70,7 @@ app.use("/server/users", usersRoute);
 app.use("/server/upload", uploadRoute);
 app.use("/server/images", fetchImage);
 
-app.get("/", (req, res) => {
+app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
