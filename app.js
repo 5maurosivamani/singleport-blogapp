@@ -22,11 +22,11 @@ app.use(bodyParser.json());
 
 // app.use(forms.array());
 
-app.use(
-  cors({
-    origin: [process.env.CLINT_URL],
-  })
-);
+// app.use(
+//   cors({
+//     origin: [process.env.CLINT_URL],
+//   })
+// );
 
 app.use(cookieParser());
 
