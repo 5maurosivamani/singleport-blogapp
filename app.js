@@ -58,7 +58,7 @@ mongoose.connection.on("error", () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "build", "index.html"));
 });
 
 const indexRoute = require("./routes/index");
@@ -67,11 +67,11 @@ const usersRoute = require("./routes/users");
 const uploadRoute = require("./routes/uploadImage");
 const fetchImage = require("./routes/fetchImage");
 
-app.use("/server", indexRoute);
-app.use("/server/posts", postsRoute);
-app.use("/server/users", usersRoute);
-app.use("/server/upload", uploadRoute);
-app.use("/server/images", fetchImage);
+app.use("/", indexRoute);
+app.use("/posts", postsRoute);
+app.use("/users", usersRoute);
+app.use("/upload", uploadRoute);
+app.use("/images", fetchImage);
 
 // Listen Port
 app.listen(port, (err) => {
