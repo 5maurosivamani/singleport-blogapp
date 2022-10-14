@@ -8,13 +8,17 @@ router.get("/:img_name", (req, res) => {
   const pathArray = __dirname.split("/");
   const newPathArray = pathArray.splice(0, pathArray.length - 1);
   const newPath = newPathArray.join("/");
+  const imageName = req.params.img_name;
 
-  var imagePath = path.join(newPath, "public", "images", req.params.img_name);
+  var imagePath = path.join(newPath, "public", "images", imageName);
+
+  // for heroku server
+  var newImagePath = "images/" + imageName;
 
   if (fs.existsSync(imagePath)) {
-    res.send(imagePath);
+    res.send(newImagePath);
   } else {
-    res.json({ status: 404, imagePath });
+    res.json({ status: 404, newImagePath });
   }
 });
 

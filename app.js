@@ -70,7 +70,7 @@ app.use("/server/upload", uploadRoute);
 app.use("/server/images", fetchImage);
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Listen Port
