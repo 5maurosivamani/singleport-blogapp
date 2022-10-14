@@ -16,7 +16,7 @@ router.get("/:img_name", (req, res) => {
   var newImagePath = "images/" + imageName;
 
   if (fs.existsSync(imagePath)) {
-    res.send(newImagePath);
+    res.send(imagePath);
   } else {
     res.json({ status: 404, newImagePath });
   }
