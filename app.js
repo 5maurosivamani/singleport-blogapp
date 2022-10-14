@@ -63,11 +63,11 @@ const usersRoute = require("./routes/users");
 const uploadRoute = require("./routes/uploadImage");
 const fetchImage = require("./routes/fetchImage");
 
-// app.use("/", indexRoute);
-app.use("/posts", postsRoute);
-app.use("/users", usersRoute);
-app.use("/upload", uploadRoute);
-app.use("/images", fetchImage);
+app.use("/server/", indexRoute);
+app.use("/server/posts", postsRoute);
+app.use("/server/users", usersRoute);
+app.use("/server/upload", uploadRoute);
+app.use("/server/images", fetchImage);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "build", "index.html"));
