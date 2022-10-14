@@ -9,6 +9,7 @@ const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const path = require("path");
 
 require("dotenv").config();
 const port = process.env.PORT || 5000;
@@ -41,7 +42,7 @@ app.use(
   })
 );
 
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(fileUpload({}));
 
@@ -56,17 +57,21 @@ mongoose.connection.on("error", () => {
   console.log("Database Connection Failed!");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 const indexRoute = require("./routes/index");
 const postsRoute = require("./routes/posts");
 const usersRoute = require("./routes/users");
 const uploadRoute = require("./routes/uploadImage");
 const fetchImage = require("./routes/fetchImage");
 
-app.use("/", indexRoute);
-app.use("/posts", postsRoute);
-app.use("/users", usersRoute);
-app.use("/upload", uploadRoute);
-app.use("/images", fetchImage);
+app.use("/server", indexRoute);
+app.use("/server/posts", postsRoute);
+app.use("/server/users", usersRoute);
+app.use("/server/upload", uploadRoute);
+app.use("/server/images", fetchImage);
 
 // Listen Port
 app.listen(port, (err) => {
