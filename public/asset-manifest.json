@@ -1,52 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.f39434fb.css",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "main.js": "/static/js/main.c6adbe2c.js",
-=======
-    "main.js": "/static/js/main.3a6ce897.js",
->>>>>>> parent of 309eb63 (image not render issue is solved)
-=======
-    "main.js": "/static/js/main.0a60f9d5.js",
->>>>>>> parent of 6f311e4 (changed the loader)
-=======
-    "main.js": "/static/js/main.0a60f9d5.js",
->>>>>>> parent of 6f311e4 (changed the loader)
     "static/media/fitness_PNG191.png": "/static/media/fitness_PNG191.185f41bc873976b45b46.png",
-    "static/media/loader.gif": "/static/media/loader.103e375040962eb49beb.gif",
     "static/media/large-leather.png": "/static/media/large-leather.acb4720102eb76e1303e.png",
     "index.html": "/index.html",
     "main.f39434fb.css.map": "/static/css/main.f39434fb.css.map",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "main.c6adbe2c.js.map": "/static/js/main.c6adbe2c.js.map"
   },
   "entrypoints": [
     "static/css/main.f39434fb.css",
     "static/js/main.c6adbe2c.js"
-=======
-    "main.3a6ce897.js.map": "/static/js/main.3a6ce897.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.f39434fb.css",
-    "static/js/main.3a6ce897.js"
->>>>>>> parent of 309eb63 (image not render issue is solved)
-=======
-    "main.0a60f9d5.js.map": "/static/js/main.0a60f9d5.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.f39434fb.css",
-    "static/js/main.0a60f9d5.js"
->>>>>>> parent of 6f311e4 (changed the loader)
-=======
-    "main.0a60f9d5.js.map": "/static/js/main.0a60f9d5.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.f39434fb.css",
-    "static/js/main.0a60f9d5.js"
->>>>>>> parent of 6f311e4 (changed the loader)
   ]
 }
