@@ -14,6 +14,34 @@ router.get("/", (req, res) => {
   });
 });
 
+// Paginate posts
+router.get("/page/:pageno", (req, res) => {
+  const pageNo = req.params.pageno || 1;
+  const limit = 5;
+
+  WorkoutPost.find()
+    .skip((pageNo - 1) * limit)
+    .limit(limit)
+    .exec(function (err, doc) {
+      if (err) {
+        res.status(500).json(err);
+        return;
+      }
+      res.status(200).json(doc);
+    });
+});
+
+// Total posts count
+router.get("/total", (req, res) => {
+  WorkoutPost.find().count(function (err, total) {
+    if (err) {
+      res.status(500).json(err);
+      return;
+    }
+    res.status(200).json({ total });
+  });
+});
+
 // get Individual Post
 router.get("/:id", (req, res) => {
   WorkoutPost.findOne({ _id: req.params.id }, (err, doc) => {
