@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
+const path = require("path");
 
 const WorkoutPost = require("../model/post");
 
@@ -73,16 +75,28 @@ router.post("/new", (req, res) => {
 // Delete Particular Post
 router.delete("/:id", (req, res) => {
   const postId = req.params.id;
-  WorkoutPost.deleteOne({ _id: postId }, (err, doc) => {
-    if (err) {
-      console.log("Deletion Failed!");
-    }
+  WorkoutPost.findById({ _id: postId }, (err, doc) => {
     if (!doc) {
       console.log("No Post found at this post Id.");
       res.send("No Post found at this post Id.");
     } else {
-      console.log("Successfully Deleted!");
-      res.send("Successfully Deleted!");
+      const imageName = doc.image;
+      const filePath = path.join(
+        __dirname,
+        "..",
+        "public",
+        "images",
+        imageName
+      );
+
+      WorkoutPost.deleteOne({ _id: postId }, (err, doc) => {
+        if (err) {
+          console.log("Deletion Failed!");
+        } else {
+          fs.unlinkSync(filePath);
+          res.send("Successfully Deleted!");
+        }
+      });
     }
   });
 });
